@@ -13,7 +13,7 @@ const Form = ({ search, query }) => {
   useEffect(() => {
     (inputRef.current.value !== "" && inputRef.current.focus()) ||
       (isTouched && inputRef.current.focus());
-  }, [isTouched]);
+  }, []);
 
   const inputRef = useRef();
   console.log(isTouched);
