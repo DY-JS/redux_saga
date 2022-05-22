@@ -26,9 +26,7 @@ function PeopleTable() {
         search: v
       },
     });
-    
-    console.log(people);
-    
+
     useEffect(() => {
       dispatch({type:LOAD_USERS, payload: {page:1, search: ''}});
     }, [dispatch]);
@@ -44,7 +42,6 @@ function PeopleTable() {
         </h1>
         <table
           border={1}
-          // width='90%'
           cellPadding={5}
           cellSpacing={0}
           >
