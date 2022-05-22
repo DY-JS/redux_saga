@@ -1,15 +1,22 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const Form = ({ search, query }) => {
+  const [isTouched, setIsTouched] = useState(false);
+
+  const handleBlur = () => setIsTouched(true);
+
   const searchHandler = (e) => {
     e.preventDefault();
     search(e.currentTarget.value);
   };
+
   useEffect(() => {
-    inputRef.current.value !== "" && inputRef.current.focus();
-  }, []);
-  console.log("form");
+    (inputRef.current.value !== "" && inputRef.current.focus()) ||
+      (isTouched && inputRef.current.focus());
+  }, [isTouched]);
+
   const inputRef = useRef();
+  console.log(isTouched);
   return (
     <form style={{ display: "inline-block" }}>
       <input
@@ -18,6 +25,7 @@ const Form = ({ search, query }) => {
         type='text'
         placeholder='Type for search'
         value={query}
+        onBlur={handleBlur}
         onChange={searchHandler}
       />
     </form>
