@@ -14,7 +14,11 @@ export default function Details() {
       type: LOAD_USER_DETAILS,
       payload: { id },
     });
-  }, [dispatch]);
+  }, []);
+
+  if (person.loading) {
+      return <h1>Loading...</h1>
+  }
 
   return (
     <div style={{ width: "max-content", margin: "0 auto" }}>
