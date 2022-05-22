@@ -7,8 +7,8 @@ export default function Details() {
   const location = useLocation();
   const dispatch = useDispatch();
   const person = useSelector((state) => state.peopleDetails);
-  const id = location.pathname.slice(location.pathname.length - 1);
-
+  const id = location.pathname.replaceAll(/\D/g,''); //из url оставил только число -заменил все нечисловые эл-ты на '';
+  // нашёл id из адресной строки
   useEffect(() => {
     dispatch({
       type: LOAD_USER_DETAILS,
@@ -35,7 +35,7 @@ export default function Details() {
         <tbody>
           <tr>
             {person.data &&
-              [...Object.keys(person.data)].map((p) => {
+              Object.keys(person.data).map((p) => {
                 if (
                   p === "birth_year" ||
                   p === "eye_color" ||

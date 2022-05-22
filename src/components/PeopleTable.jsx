@@ -60,8 +60,7 @@ function PeopleTable() {
           </thead>
           <tbody>
             {people?.data?.results.map(character => {
-              //const id =character.url.slice(20).replaceAll(/\D/g,''); //из url оставил только число -заменил все нечисловые эл-ты на '' начиная с 20го символа
-              const id = character.url.slice(character.url.length-2, character.url.length-1) //из url оставил только предпоследний символ id
+             const id =character.url.slice(25).replaceAll(/\D/g,''); //из url оставил только число -заменил все нечисловые эл-ты на '' начиная с 25го символа
               console.log(id);
               return (
                 <tr key={character.name}>
